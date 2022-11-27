@@ -1,0 +1,172 @@
+<div class="toolbar" role="banner">
+  <img
+    width="50"
+    alt="Fetch Logo"
+    src="assets/images/logo.png"
+  />
+</div>
+<div class="intake-form">
+  <div>
+
+    <h1>
+      <button mat-stroked-button (click)="returnHome()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      Fetch Intake Form
+    </h1>
+      <p>
+        Please provide your full name, email, password, occupation, and state before submitting.
+      </p>
+  </div>
+  <mat-progress-bar
+  *ngIf="isFetching"
+  mode="indeterminate"
+  value="40"
+></mat-progress-bar>
+
+<form class="fetch-form" [formGroup]="fetchForm" #myForm="ngForm" (ngSubmit)="submit()">
+  <div>
+    <mat-form-field appearance="outline" class="name-input">
+      <mat-label>Full Name</mat-label>
+      <input matInput  
+        formControlName="fullName"
+        placeholder="Full Name"
+        >
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="email-input">
+      <mat-label>Email</mat-label>
+      <input matInput  
+        formControlName="email"
+        placeholder="Email"
+        >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="password-input">
+      <mat-label>Password</mat-label>
+      <input matInput  
+        formControlName="password"
+        placeholder="password"
+        >
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="job-input">
+      <mat-label>Occupation</mat-label>
+      <mat-select formControlName="occupation" placeholder="occupation">
+        <mat-option *ngFor = "let o of occupation" [value]="o">
+          {{o}}
+        </mat-option>
+        <!-- <mat-option *ngFor="let occ of occupation; let i = index" [value]="occ">
+          {{ occ }}
+        </mat-option> -->
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="state-input">
+      <mat-label>State</mat-label>
+      <mat-select formControlName="state" placeholder="state">
+        <mat-option *ngFor = "let s of state" [value]="s.name">
+          {{s.name}}
+        </mat-option>
+        <!-- <mat-option *ngFor="let st of state" [value]="st.name">
+          {{ st.name }}
+        </mat-option> -->
+      </mat-select>
+    </mat-form-field>
+
+    <div class="submit-button">
+      <button mat-raised-button class="ml-2">
+        Submit
+      </button>
+    </div>
+  </div>
+
+
+
+
+</form>
+
+</div>
+
+
+
+<!--<form [formGroup]="fetchForm">
+     <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+        <input
+          formControlName="fullName"
+          placeholder="Full Name"
+        />
+    </mat-form-field>
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+              <input
+                formControlName="email"
+                placeholder="Email"
+              />
+          </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+              <input
+                formControlName="password"
+                placeholder="Password"
+              />
+          </mat-form-field>
+    </div> -->
+
+    <!-- <div>
+    <mat-form-field>
+        <mat-label>Client</mat-label>
+        <mat-select formControlName="clientId">
+          <mat-option *ngFor="let client of clients" [value]="client.client_id">
+            {{ client.client_name }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+            <mat-label>Occupation</mat-label>
+              <mat-select
+              formControlName="occupation"
+              placeholder="Occupation"
+              >
+                <mat-option
+                  *ngFor="let occ of occupation"
+                  [value]="occupation.name"
+                >
+                  {{ occ.name}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <mat-select
+            formControlName="state"
+            placeholder="State"
+            >
+              <mat-option
+                *ngFor="let st of state"
+                [value]="st.abbreviation"
+              >
+                {{ st.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div> 
+
+
+    <button mat-stroked-button (click)="submit()" class="ml-2">
+      Submit
+    </button>
+  </form> -->
